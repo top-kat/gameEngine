@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta spriteSheet="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PERF TEST</title>
+
+    </head>
+    <body>
+        <script>
+
+            //--------------------------------------------------
+            //                TESTS DE PERFORMANCE
+            //--------------------------------------------------
+            
+            var o2 = {}, o3 = {}, arr1 = [], arr2 = [], arr3 = [], arr4 = [], arr5 = [], arr6 = [];
+                    var o = { id: 26, init: 'gtrgtrgtgrtrtgrr', collidable: true, static: true, visible: false, shape: "rect", x: 96, y: 1920, w: 48, h: 192,
+                    id2: 26, init2: 'gtrgtrgtgrtrtgrr', collidable2: true, static2: true, visible2: false, shap2e: "rect", x2: 96, y: 1920, w2: 48, h2: 192,
+                    id24: 26, init42: 'gtrgtrgtgrtrtgrr', collidabl4e2: true, sta4tic2: true, visib4le2: false, sha4p2e: "rect", x2: 96, y: 1920, w4: 48, h4: 192,}
+                    
+                    for (let i = 0; i < 1000; i++) {
+                        o2['blah' + i] = JSON.parse(JSON.stringify(o))
+                        o3['blah2' + i] = JSON.parse(JSON.stringify(o))            
+                        arr1.push('blah' + i)   
+                        arr2.push(o2['blah' + i])    
+                        arr3.push('blah2' + i)   
+                        arr4.push(o3['blah2' + i]) 
+                    }
+
+            var test = {
+                //--------------------------------------------------
+                //                 CODE 1
+                //--------------------------------------------------
+                code1() {
+
+                  arr1.forEach( (e,i) => {
+                      let e2 = arr3[i]
+                      arr5.push(o2[e].init + o3[e2].init42 )
+                  } )
+
+                },
+                //--------------------------------------------------
+                //                 VERSUS
+                //                 CODE 2
+                //--------------------------------------------------
+                code2() {
+                    arr2.forEach( (e,i) => {
+                      let e2 = arr2[i]
+                      arr6.push(e.init + e2.init42 )
+                  } )
+                }
+            }
+
+
+            var i = 0;
+            var a = 0;
+            var b = false;
+            var arr = Array(20).fill(['aa','bb']);
+
+            var iterations = 100000;
+            console.time('Function #1');
+
+            for (var i = 0; i < iterations; i++) {
+
+                arr = Array( 20 ).fill( ['aa', 'bb'] );
+                arr.forEach( (elm, i) => {delete elm;});
+
+                
+                
+            }
+            console.timeEnd('Function #1');
+
+
+            console.time('Function #2');
+
+            for (var i = 0; i < iterations; i++) {
+
+                
+                arr = Array( 20 ).fill( ['aa', 'bb'] );
+                for (var j = 0, l = arr.length; j < l; j++) {
+                    arr.splice(0,1);
+                }
+
+            }
+
+            console.timeEnd('Function #2');
+
+
+        </script>
+    </body>
+</html>
