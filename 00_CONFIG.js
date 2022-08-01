@@ -7,10 +7,10 @@ GE.config = {
     // Config Build APK (App mobile)
     //--------------------
     nom: 'GE', // nom de l'app
-    auteur: 'Seb', // nom de l'auteur ou de la team
+    auteur: 'Sébastien GARCIA-ROMEU', // nom de l'auteur ou de la team
     description: `Un autre jeu Geek School`, // courte description
     email: 'seb@geekschool.fr', // adresse email de contact
-    site: 'http://geekschool.fr', // site de la team
+    site: 'http://.fr', // site de la team
     version: '1.0.0', // version du jeu
     mobile: {
         orientation: 'landscape', // all, portrait, landscape
